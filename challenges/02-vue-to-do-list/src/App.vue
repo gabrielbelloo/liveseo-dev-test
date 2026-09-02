@@ -18,11 +18,15 @@ const addTask = (title: string) => {
   })
 }
 
+const removeTask = (taskId: number) => {
+  tasks.value = tasks.value.filter(task => task.id !== taskId)
+}
+
 </script>
 
 <template>
   <main>
-    <TodoItem v-for="task in filteredTasks" :key="task.id" :task="task" />
+    <TodoItem v-for="task in filteredTasks" :key="task.id" :task="task" @remove="removeTask" />
     <TodoForm @add="addTask" />
   </main>
 </template>
