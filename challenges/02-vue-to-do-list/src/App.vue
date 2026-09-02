@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import TodoForm from './components/TodoForm.vue'
+import TodoItem from './components/TodoItem.vue'
+
 interface Task {
   id: number
   title: string
@@ -20,6 +22,7 @@ const addTask = (title: string) => {
 
 <template>
   <main>
+    <TodoItem v-for="task in filteredTasks" :key="task.id" :task="task" />
     <TodoForm @add="addTask" />
   </main>
 </template>
