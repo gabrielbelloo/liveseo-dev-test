@@ -14,4 +14,18 @@ function getUserNamesOlderThan23(
     return users.filter(user => user.age > 23).map(user => user.name);
 }
 
+// Bônus:
+type NumericKeys<T> = {
+    [K in keyof T]: T[K] extends number ? K : never
+}[keyof T];
+
+function getUserNamesByNumber<T extends { name: string }>(
+    users: T[],
+    field: NumericKeys<T>,
+    value: number
+): string[]{
+    return users.filter(user => user[field] === value).map(user => user.name);
+}
+
 console.log(getUserNamesOlderThan23(users));
+console.log(getUserNamesByNumber(users, "age", 22));
