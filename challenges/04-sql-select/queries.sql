@@ -10,3 +10,5 @@ INSERT INTO users (name, email, created_at) VALUES ('Ana', 'ana@email.com', '202
                                                     ('Maria', 'maria@email.com', '2024-02-15');
 
 SELECT * FROM users ORDER BY created_at DESC;
+
+SELECT DATE_FORMAT(created_at, '%Y-%m') as mes, COUNT(*) AS qtd_users FROM users GROUP BY DATE_FORMAT(created_at, '%Y-%m');
